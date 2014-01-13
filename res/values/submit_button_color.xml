@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <drawable name="submit_button_normal">#FF15AD9F</drawable>
+    <drawable name="submit_button_pressed">#FF16B8A9</drawable>
+</resources>
