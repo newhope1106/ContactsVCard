@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="contacts_count_label">联系人个数</string>
+    <string name="contacts_count_hint">生成联系人的个数</string>
+    <string name="contacts_face_count_label">联系人头像个数</string>
+    <string name="contacts_face_count_hint">有多少联系人有头像,默认为0个</string>
+    <string name="open_file_failed">打开文件失败</string>
+    <string name="no_more_contacts_number">不生成大于5000的联系人</string>
+    <string name="no_external_storage">存储卡不可用</string>
+    <string name="vcard_generated_failed">vcard生成失败</string>
+    <string name="no_empty_in_contacts_field">联系人个数不能为空</string>
+    <string name="submit">确定</string>
+</resources>
