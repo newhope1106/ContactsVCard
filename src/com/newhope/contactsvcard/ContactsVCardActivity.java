@@ -64,7 +64,7 @@ public class ContactsVCardActivity extends Activity {
 			
 			am.close();
 		}catch(Exception e){
-			Toast.makeText(this, "打开文件失败", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, getString(R.string.open_file_failed), Toast.LENGTH_SHORT).show();
 		}
 	}
 	
@@ -81,12 +81,12 @@ public class ContactsVCardActivity extends Activity {
 	@SuppressLint("SimpleDateFormat")
 	public void generatorVCard(int contactCount, int contactFaceCount){
 		if(contactCount > 5000){
-			Toast.makeText(this, "不生成大于5000的联系人", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, getString(R.string.no_more_contacts_number), Toast.LENGTH_SHORT).show();
 			return;
 		}
 		
 		if (!Environment.getExternalStorageState().equals(Environment.MEDIA_MOUNTED)){
-			Toast.makeText(this, "存储卡不可用", Toast.LENGTH_SHORT).show();
+			Toast.makeText(this, getString(R.string.no_external_storage), Toast.LENGTH_SHORT).show();
 			
 			return ;
 		}
@@ -140,10 +140,10 @@ public class ContactsVCardActivity extends Activity {
 	        
 			writer.close();
 			
-			Toast.makeText(this, "生成vCard:" + absolutePath, Toast.LENGTH_LONG).show();
+			Toast.makeText(this, "vCard:" + absolutePath, Toast.LENGTH_LONG).show();
 	        
 		}catch(Exception e){
-			Toast.makeText(this, "生成vCard失败", Toast.LENGTH_LONG).show();
+			Toast.makeText(this, getString(R.string.vcard_generated_failed), Toast.LENGTH_LONG).show();
 			e.printStackTrace();
 		}
 		
@@ -263,7 +263,7 @@ public class ContactsVCardActivity extends Activity {
 			String contactCountStr = contactsCountField.getText().toString();
 			
 			if(null == contactCountStr || "".endsWith(contactCountStr)){
-				Toast.makeText(mContext, "联系人个数不能为空", Toast.LENGTH_SHORT).show();
+				Toast.makeText(mContext, getString(R.string.no_empty_in_contacts_field), Toast.LENGTH_SHORT).show();
 				
 				return;
 			}

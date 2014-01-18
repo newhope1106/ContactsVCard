@@ -51,7 +51,12 @@ public final class R {
         public static final int contacts_face_count_hint=0x7f050006;
         public static final int contacts_face_count_label=0x7f050005;
         public static final int contacts_generator=0x7f050002;
-        public static final int submit=0x7f050007;
+        public static final int no_empty_in_contacts_field=0x7f05000b;
+        public static final int no_external_storage=0x7f050009;
+        public static final int no_more_contacts_number=0x7f050008;
+        public static final int open_file_failed=0x7f050007;
+        public static final int submit=0x7f05000c;
+        public static final int vcard_generated_failed=0x7f05000a;
     }
     public static final class style {
         /** 
