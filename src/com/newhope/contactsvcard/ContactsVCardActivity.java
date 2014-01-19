@@ -27,6 +27,7 @@ public class ContactsVCardActivity extends Activity {
 	private ClearEditText contactsCountField = null;
 	private ClearEditText contactsFaceCountField = null;
 	private ArrayList<String> familyNames = new ArrayList<String>();
+	private static int MAX_NUMBER = 5000;
 	
 	private AssetManager am = null;
 	
@@ -82,7 +83,7 @@ public class ContactsVCardActivity extends Activity {
 	
 	@SuppressLint("SimpleDateFormat")
 	public void generatorVCard(int contactCount, int contactFaceCount){
-		if(contactCount > 5000){
+		if(contactCount > MAX_NUMBER){
 			Toast.makeText(this, getString(R.string.no_more_contacts_number), Toast.LENGTH_SHORT).show();
 			return;
 		}
