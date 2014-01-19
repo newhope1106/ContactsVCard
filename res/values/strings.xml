@@ -8,7 +8,7 @@
     <string name="contacts_face_count_label">avators</string>
     <string name="contacts_face_count_hint">How many, 0 if default</string>
     <string name="open_file_failed">open file failed</string>
-    <string name="no_more_contacts_number">no more then 5000 contacts</string>
+    <string name="no_more_contacts_number">no more than 5000 contacts</string>
     <string name="no_external_storage">no external storage</string>
     <string name="vcard_generated_failed">vcard generated failed</string>
     <string name="no_empty_in_contacts_field">number of contacts shound not be empty</string>
