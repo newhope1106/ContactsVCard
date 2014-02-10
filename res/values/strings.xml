@@ -13,4 +13,6 @@
     <string name="vcard_generated_failed">vcard generated failed</string>
     <string name="no_empty_in_contacts_field">number of contacts shound not be empty</string>
     <string name="submit">confirm</string>
+    <string name="more_settings">more settings↓</string>
+    <string name="keyback_hint">press again to exit</string>
 </resources>

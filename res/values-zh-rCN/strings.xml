@@ -10,4 +10,6 @@
     <string name="vcard_generated_failed">vcard生成失败</string>
     <string name="no_empty_in_contacts_field">联系人个数不能为空</string>
     <string name="submit">确定</string>
+    <string name="more_settings">更多设置↓</string>
+    <string name="keyback_hint">再按一次退出程序</string>
 </resources>

@@ -13,27 +13,45 @@ import android.app.Activity;
 import android.content.Context;
 import android.content.res.AssetManager;
 import android.util.Log;
+import android.view.KeyEvent;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
+import android.view.View.OnTouchListener;
+import android.view.inputmethod.InputMethodManager;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import a_vcard.android.provider.Contacts;
 import a_vcard.android.syncml.pim.vcard.ContactStruct;
 import a_vcard.android.syncml.pim.vcard.VCardComposer;
 
-public class ContactsVCardActivity extends Activity {
+public class ContactsVCardActivity extends Activity implements OnTouchListener{
+	private LinearLayout basicInfoLayout = null;
 	private Button submitBtn = null;
 	private ClearEditText contactsCountField = null;
 	private ClearEditText contactsFaceCountField = null;
+	private TextView moreSettingsView = null;
 	private ArrayList<String> familyNames = new ArrayList<String>();
 	private static int MAX_NUMBER = 5000;
 	
 	private AssetManager am = null;
 	
+	/*两次返回键之间的间隔*/
+	private long exitTime = 0;
+	
 	public static final String TAG = "ContactsVCardActivity";
 	public static final String VCARD_FILE_PATH = Environment.getExternalStorageDirectory() + "/vcard";
 	private final String familyNameFilePath = "txt/Chinese family name.txt";
+
+	//更多设置的状态
+	private enum MoreSettingsViewState{
+		VISIBLE, GONE
+	};
+	
+	MoreSettingsViewState moreSettingsViewState = MoreSettingsViewState.GONE;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -43,12 +61,20 @@ public class ContactsVCardActivity extends Activity {
 		submitBtn = (Button)findViewById(R.id.submit_btn);
 		submitBtn.setOnClickListener(new OnSubmitBtnClickListener(this));
 		
+		//联系人个数
 		contactsCountField = (ClearEditText)findViewById(R.id.contacts_counts);
+		//头像个数
 		contactsFaceCountField = (ClearEditText)findViewById(R.id.contacts_face_counts);
 		
+		moreSettingsView = (TextView)findViewById(R.id.more_settings);
+		
 		am = getAssets();
+		
+		basicInfoLayout = (LinearLayout)findViewById(R.id.basic_info_layout);
+		basicInfoLayout.setOnTouchListener(this);
 	}
 	
+	//获取读取文件中的姓氏
 	private void readChineseFamilyName(){
 		try{
 			InputStream familyName = am.open(familyNameFilePath);
@@ -71,6 +97,7 @@ public class ContactsVCardActivity extends Activity {
 		}
 	}
 	
+	//生成姓氏
 	public String generateFamilyName(){
 		if(familyNames.size() == 0){
 			return null;
@@ -81,6 +108,7 @@ public class ContactsVCardActivity extends Activity {
 		return familyNames.get(index);
 	}
 	
+	//生成vcard文件
 	@SuppressLint("SimpleDateFormat")
 	public void generatorVCard(int contactCount, int contactFaceCount){
 		if(contactCount > MAX_NUMBER){
@@ -110,6 +138,7 @@ public class ContactsVCardActivity extends Activity {
 		String date = sDateFormat.format(new java.util.Date());
 		String vcardName = date + ".vcf";
 		
+		//生成vcard文件路径
 		File vCardFile = new File(VCARD_FILE_PATH, vcardName);
 		String absolutePath = VCARD_FILE_PATH+"/" + vcardName;
 		
@@ -154,6 +183,7 @@ public class ContactsVCardActivity extends Activity {
 		
 	}
 	
+	//随机生成号码
 	public String randomGenerateTel(){
 		StringBuffer tel = new StringBuffer("1");
 		
@@ -164,6 +194,7 @@ public class ContactsVCardActivity extends Activity {
 		return tel.toString();
 	}
 	
+	//生成姓氏后面的名字
 	public String generateSecondName(){
 		int startIndex = 0x4E00;
 		int endIndex = 0x9FFF;
@@ -184,6 +215,58 @@ public class ContactsVCardActivity extends Activity {
 		return secondName.toString();
 	}
 	
+	
+	private void hideSoftKeyboard(){
+		((InputMethodManager)getSystemService(INPUT_METHOD_SERVICE)).hideSoftInputFromWindow(ContactsVCardActivity.this.getCurrentFocus().getWindowToken(), InputMethodManager.HIDE_NOT_ALWAYS); 
+	}
+	
+	@Override
+    public boolean onKeyDown(int keyCode, KeyEvent event) {
+		//隐藏更多设置
+		if(moreSettingsViewState == MoreSettingsViewState.VISIBLE){
+			moreSettingsView.setVisibility(TextView.GONE);
+			moreSettingsViewState = MoreSettingsViewState.GONE;
+			
+			return true;
+		}else{
+			if (keyCode == KeyEvent.KEYCODE_BACK) {
+	            exit();
+	            return false;
+	        }
+		}
+		
+        return super.onKeyDown(keyCode, event);
+    }
+	
+	//按返回键判断两次按下返回键的事件决定是否退出
+	public void exit() {
+        if ((System.currentTimeMillis() - exitTime) > 1000) {
+            Toast.makeText(getApplicationContext(), getString(R.string.keyback_hint),
+                    Toast.LENGTH_SHORT).show();
+            exitTime = System.currentTimeMillis();
+        } else {
+            finish();
+            System.exit(0);
+        }
+    }
+	
+	public boolean onTouch(View v, MotionEvent motionEvent) {
+		switch (motionEvent.getActionMasked()){
+			//显示更多设置
+			case MotionEvent.ACTION_DOWN:{
+				hideSoftKeyboard();
+				if(moreSettingsViewState == MoreSettingsViewState.GONE){
+					moreSettingsView.setVisibility(TextView.VISIBLE);
+					moreSettingsViewState = MoreSettingsViewState.VISIBLE;
+				}
+				
+				return true;
+			}	
+		}
+		return false;
+	}
+	
+	//提交数据
 	private class OnSubmitBtnClickListener implements OnClickListener{
 		private Context mContext; 
 		public OnSubmitBtnClickListener(Context context){
