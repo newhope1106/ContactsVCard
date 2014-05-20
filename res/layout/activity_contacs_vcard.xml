@@ -1,98 +1,27 @@
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:tools="http://schemas.android.com/tools"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
-    android:layout_height="match_parent">
-	<LinearLayout 
-	    android:id="@+id/basic_info_layout"
-	    android:layout_width="match_parent"
-	    android:layout_height="match_parent"
-	    android:paddingBottom="@dimen/activity_vertical_margin"
-	    android:paddingLeft="@dimen/activity_horizontal_margin"
-	    android:paddingRight="@dimen/activity_horizontal_margin"
-	    android:paddingTop="@dimen/activity_vertical_margin"
-	    android:orientation="vertical"
-	    tools:context=".ContactsVCardActivity" >
-	    
-	    <TextView
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:gravity="center_vertical|center_horizontal"
-	        android:layout_marginTop="30dp"
-	        android:textSize="28sp"
-	        android:text="@string/contacts_generator" />
-	    
-	    <TextView
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:gravity="center_vertical|left"
-	        android:layout_marginTop="50dp"
-	        android:textSize="24sp"
-	        android:text="@string/contacts_count_label" />
-	    
-	    <com.newhope.contactsvcard.ClearEditText
-	        android:id="@+id/contacts_counts"
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:layout_marginTop="10dp"
-	        android:textSize="18sp"
-	        android:paddingLeft="10dp"
-	        android:paddingRight="10dp"  
-	        android:paddingTop="10dp"
-	        android:paddingBottom="10dp" 
-	        android:drawableRight="@drawable/delete_selector"
-	        android:background = "#00000000"
-	        android:singleLine="true"
-	        android:inputType="number"
-	        android:hint="@string/contacts_count_hint" />
-	    
-	    <TextView
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:gravity="center_vertical|left"
-	        android:layout_marginTop="20dp"
-	        android:textSize="24sp"
-	        android:text="@string/contacts_face_count_label" />
-	    
-	    <com.newhope.contactsvcard.ClearEditText
-	        android:id="@+id/contacts_face_counts"
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:textSize="18sp"
-	        android:layout_marginTop="10dp"
-	        android:paddingLeft="10dp"  
-	        android:paddingRight="10dp"   
-	        android:paddingTop="10dp"
-	        android:paddingBottom="10dp" 
-	        android:drawableRight="@drawable/delete_selector"
-	        android:background = "#00000000"
-	        android:singleLine="true"
-	        android:inputType="number"
-	        android:hint="@string/contacts_face_count_hint" />
-	    
-	    <Button
-	        android:id="@+id/submit_btn"
-	        android:layout_width="match_parent"
-	        android:layout_height="wrap_content"
-	        android:gravity="center_vertical|center_horizontal"
-	        android:layout_marginTop="50dp"
-	        android:paddingTop="5dp"
-	        android:paddingBottom="8dp"
-	        android:textSize="28sp"
-	        android:background="@drawable/submit_button_selector"
-	        android:textColor="#FFFFFFFF"
-	        android:text="@string/submit" />
-	</LinearLayout>
-	<TextView
-	    android:id="@+id/more_settings"
-	    android:layout_alignParentBottom="true"
-	    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextView
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp"
-        android:textSize="24sp"
-        android:textColor="@color/clouds"
-        android:background="@color/concrete"
         android:gravity="center_vertical|center_horizontal"
-	    android:text="@string/more_settings"
-	    android:visibility="gone" />
-</RelativeLayout>
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:textSize="28sp"
+        android:text="@string/contacts_generator" />
+    
+    <GridView
+        android:id="@+id/grid_views"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:numColumns="auto_fit"
+	    android:verticalSpacing="3dip"
+	    android:horizontalSpacing="3dip"
+	    android:stretchMode="columnWidth"
+	    android:gravity="center" >
+    </GridView>
+
+</LinearLayout>

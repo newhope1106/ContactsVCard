@@ -2,7 +2,7 @@
 <resources>
     <string name="app_name">vCard</string>
     <string name="action_settings">Settings</string>
-    <string name="contacts_generator">vCard</string>
+    <string name="contacts_generator">vCard generator</string>
     <string name="contacts_count_label">contacts</string>
     <string name="contacts_count_hint">How many</string>
     <string name="contacts_face_count_label">avators</string>
@@ -15,4 +15,15 @@
     <string name="submit">confirm</string>
     <string name="more_settings">more settings↓</string>
     <string name="keyback_hint">press again to exit</string>
+    
+    <string name="same_contacts_vcard">the same contacts</string>
+    <string name="contact_name">name</string>
+    <string name="phone_1">phone 1, default empty</string>
+    <string name="phone_2">phone 2, default empty</string>
+    <string name="count">input count</string>
+    
+    <string name="normal_contacts_vcard">normal contacts</string>
+    <string name="contacts_with_avator_vcard">contacts with avator</string>
+    <string name="contacts_count">contacts count</string>
+    <string name="contain_phone_count">contain phone count, max 3</string>
 </resources>

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <string name="contacts_generator">vCard 生成</string>
     <string name="contacts_count_label">联系人个数</string>
     <string name="contacts_count_hint">生成联系人的个数</string>
     <string name="contacts_face_count_label">联系人头像个数</string>
@@ -12,4 +13,15 @@
     <string name="submit">确定</string>
     <string name="more_settings">更多设置↓</string>
     <string name="keyback_hint">再按一次退出程序</string>
+    
+    <string name="same_contacts_vcard">完全相同联系人</string>
+    <string name="contact_name">姓名</string>
+    <string name="phone_1">第一个号码,缺省为空</string>
+    <string name="phone_2">第二个号码,缺省为空</string>
+    <string name="count">生成的个数</string>
+    
+    <string name="normal_contacts_vcard">普通联系人</string>
+    <string name="contacts_with_avator_vcard">有头像联系人</string>
+    <string name="contacts_count">联系人个数</string>
+    <string name="contain_phone_count">包含号码个数，最大3个</string>
 </resources>
