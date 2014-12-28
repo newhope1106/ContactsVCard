@@ -12,7 +12,7 @@
         android:layout_alignParentTop="true"
         android:gravity="center_vertical|center_horizontal"
         android:layout_marginTop="30dp"
-        android:layout_marginBottom="60dp"
+        android:layout_marginBottom="30dp"
         android:textSize="28sp"
         android:text="@string/normal_contacts_vcard" />
    
