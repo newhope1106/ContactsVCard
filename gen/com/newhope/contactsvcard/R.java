@@ -45,39 +45,31 @@ public final class R {
         public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class drawable {
-        public static final int delete_selector=0x7f020000;
-        public static final int edit_text_bg=0x7f020001;
-        public static final int ic_launcher=0x7f020002;
-        public static final int search_clear_normal=0x7f020003;
-        public static final int search_clear_pressed=0x7f020004;
-        public static final int submit_button_normal=0x7f020007;
-        public static final int submit_button_pressed=0x7f020008;
-        public static final int submit_button_selector=0x7f020005;
-        public static final int vcard_icon=0x7f020006;
+        public static final int border=0x7f020000;
+        public static final int delete_selector=0x7f020001;
+        public static final int edit_text_bg=0x7f020002;
+        public static final int ic_launcher=0x7f020003;
+        public static final int search_clear_normal=0x7f020004;
+        public static final int search_clear_pressed=0x7f020005;
+        public static final int submit_button_normal=0x7f020008;
+        public static final int submit_button_pressed=0x7f020009;
+        public static final int submit_button_selector=0x7f020006;
+        public static final int vcard_icon=0x7f020007;
     }
     public static final class id {
-        public static final int action_settings=0x7f09000d;
-        public static final int basic_info_layout=0x7f090004;
+        public static final int action_settings=0x7f090008;
         public static final int contacts_count=0x7f090001;
-        public static final int contacts_counts=0x7f090005;
-        public static final int contacts_face_counts=0x7f090006;
-        public static final int grid_view_item=0x7f09000c;
-        public static final int grid_views=0x7f090000;
-        public static final int more_settings=0x7f090007;
-        public static final int name=0x7f090008;
-        public static final int number=0x7f09000b;
-        public static final int phone1=0x7f090009;
-        public static final int phone2=0x7f09000a;
-        public static final int phone_count=0x7f090002;
-        public static final int submit_btn=0x7f090003;
+        public static final int grid_view_item=0x7f090007;
+        public static final int more_numbers_checkbox=0x7f090005;
+        public static final int more_settings=0x7f090002;
+        public static final int repeat_contacts_checkbox=0x7f090004;
+        public static final int settings_container=0x7f090003;
+        public static final int submit_btn=0x7f090006;
+        public static final int title=0x7f090000;
     }
     public static final class layout {
         public static final int activity_contacs_vcard=0x7f030000;
-        public static final int activity_contacts_with_avator_vcard=0x7f030001;
-        public static final int activity_normal_contacts_vcard=0x7f030002;
-        public static final int activity_normal_vcard=0x7f030003;
-        public static final int acttivity_same_contacts_vcard=0x7f030004;
-        public static final int grid_item_view_layout=0x7f030005;
+        public static final int grid_item_view_layout=0x7f030001;
     }
     public static final class menu {
         public static final int contacs_vcard=0x7f080000;
@@ -85,26 +77,29 @@ public final class R {
     public static final class string {
         public static final int action_settings=0x7f060001;
         public static final int app_name=0x7f060000;
-        public static final int contact_name=0x7f060010;
-        public static final int contacts_count=0x7f060016;
+        public static final int contact_name=0x7f060011;
+        public static final int contacts_count=0x7f060017;
         public static final int contacts_count_hint=0x7f060004;
         public static final int contacts_count_label=0x7f060003;
         public static final int contacts_face_count_hint=0x7f060006;
         public static final int contacts_face_count_label=0x7f060005;
         public static final int contacts_generator=0x7f060002;
-        public static final int contacts_with_avator_vcard=0x7f060015;
-        public static final int contain_phone_count=0x7f060017;
-        public static final int count=0x7f060013;
-        public static final int keyback_hint=0x7f06000e;
+        public static final int contacts_with_avator_vcard=0x7f060016;
+        public static final int contain_phone_count=0x7f060018;
+        public static final int count=0x7f060014;
+        public static final int keyback_hint=0x7f06000f;
+        public static final int more_numbers_allowed=0x7f06001a;
         public static final int more_settings=0x7f06000d;
+        public static final int more_settings_fold=0x7f06000e;
         public static final int no_empty_in_contacts_field=0x7f06000b;
         public static final int no_external_storage=0x7f060009;
         public static final int no_more_contacts_number=0x7f060008;
-        public static final int normal_contacts_vcard=0x7f060014;
+        public static final int normal_contacts_vcard=0x7f060015;
         public static final int open_file_failed=0x7f060007;
-        public static final int phone_1=0x7f060011;
-        public static final int phone_2=0x7f060012;
-        public static final int same_contacts_vcard=0x7f06000f;
+        public static final int phone_1=0x7f060012;
+        public static final int phone_2=0x7f060013;
+        public static final int repeat_contacts_allowed=0x7f060019;
+        public static final int same_contacts_vcard=0x7f060010;
         public static final int submit=0x7f06000c;
         public static final int vcard_generated_failed=0x7f06000a;
     }

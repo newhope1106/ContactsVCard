@@ -24,17 +24,5 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity
-            android:name="com.newhope.contactsvcard.activities.activities.VCardNormalActivity">
-        </activity>
-        <activity
-            android:name="com.newhope.contactsvcard.activities.SameContactsVCardActivity">
-        </activity>
-        <activity
-            android:name="com.newhope.contactsvcard.activities.NormalContactsVCardActivity">
-        </activity>
-        <activity
-            android:name="com.newhope.contactsvcard.activities.ContactsWithAvatarVCardActivity">
-        </activity>
     </application>
 </manifest>

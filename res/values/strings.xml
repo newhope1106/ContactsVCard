@@ -8,12 +8,13 @@
     <string name="contacts_face_count_label">avators</string>
     <string name="contacts_face_count_hint">How many, 0 if default</string>
     <string name="open_file_failed">open file failed</string>
-    <string name="no_more_contacts_number">no more than 5000 contacts</string>
+    <string name="no_more_contacts_number">no more than 100000 contacts</string>
     <string name="no_external_storage">no external storage</string>
     <string name="vcard_generated_failed">vcard generated failed</string>
-    <string name="no_empty_in_contacts_field">number of contacts shound not be empty</string>
+    <string name="no_empty_in_contacts_field">number of contacts should not be empty</string>
     <string name="submit">confirm</string>
     <string name="more_settings">more settings↓</string>
+    <string name="more_settings_fold">more settings↑</string>
     <string name="keyback_hint">press again to exit</string>
     
     <string name="same_contacts_vcard">the same contacts</string>
@@ -26,4 +27,7 @@
     <string name="contacts_with_avator_vcard">contacts with avator</string>
     <string name="contacts_count">contacts count</string>
     <string name="contain_phone_count">contain phone count, max 3</string>
+    
+    <string name="repeat_contacts_allowed">repeat contacts allowed</string>
+    <string name="more_numbers_allowed">more numbers allowed</string>
 </resources>
