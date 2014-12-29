@@ -23,7 +23,7 @@
     <string name="phone_2">phone 2, default empty</string>
     <string name="count">input count</string>
     
-    <string name="normal_contacts_vcard">VCard contacts</string>
+    <string name="normal_contacts_vcard">vCard contacts</string>
     <string name="contacts_with_avator_vcard">contacts with avator</string>
     <string name="contacts_count">contacts count</string>
     <string name="contain_phone_count">contain phone count, max 3</string>

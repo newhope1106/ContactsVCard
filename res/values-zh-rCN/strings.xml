@@ -21,7 +21,7 @@
     <string name="phone_2">第二个号码,缺省为空</string>
     <string name="count">生成的个数</string>
     
-    <string name="normal_contacts_vcard">VCard联系人</string>
+    <string name="normal_contacts_vcard">vCard联系人</string>
     <string name="contacts_with_avator_vcard">有头像联系人</string>
     <string name="contacts_count">联系人个数</string>
     <string name="contain_phone_count">包含号码个数，最大3个</string>
