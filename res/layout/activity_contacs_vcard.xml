@@ -16,91 +16,98 @@
         android:textSize="28sp"
         android:text="@string/normal_contacts_vcard" />
    
-    <com.newhope.contactsvcard.ClearEditText
-        android:id="@+id/contacts_count"
+    <LinearLayout
+        android:id="@+id/content_container"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_below="@id/title"
-        android:layout_marginTop="10dp"
-        android:textSize="18sp"
-        android:paddingLeft="10dp"
-        android:paddingRight="10dp"  
-        android:paddingTop="10dp"
-        android:paddingBottom="10dp" 
-        android:drawableRight="@drawable/delete_selector"
-        android:background = "#00000000"
-        android:singleLine="true"
-        android:hint="@string/contacts_count" />
-    
-    <TextView
-        android:id="@+id/more_settings"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/contacts_count"
-        android:layout_marginTop="10dp"
-        android:paddingTop="5dp"
-        android:paddingBottom="5dp"
-        android:gravity="center"
-        android:text="@string/more_settings"
-        android:background="@color/clouds"
-        android:textSize="20sp"/>
-    
-    <LinearLayout
-        android:id="@+id/settings_container"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/more_settings"
-        android:background="@drawable/border"
-        android:orientation="vertical"
-        android:visibility="gone" >
-        <RelativeLayout
-            android:layout_width="match_parent"
-	        android:layout_height="wrap_content">
-            <TextView
-                android:layout_width="wrap_content"
-        		android:layout_height="wrap_content"
-        		android:layout_marginLeft="5dp"
-        		android:paddingTop="5dp"
-        		android:paddingBottom="5dp"
-        		android:layout_centerVertical="true"
-        		android:layout_alignParentLeft="true"
-        		android:text="@string/repeat_contacts_allowed" />
-            <CheckBox
-                android:id="@+id/repeat_contacts_checkbox"
-                android:layout_width="wrap_content"
-        		android:layout_height="wrap_content"
-        		android:layout_marginRight="5dp"
-        		android:layout_alignParentRight="true"/>
-        </RelativeLayout>
-        
-        <ImageView
-            android:layout_width="match_parent"
-	        android:layout_height="1dp"
-	        android:layout_marginLeft="5dp"
-        	android:layout_marginRight="5dp"
-	        android:background="#6695a5a6"/>
-        
-        <RelativeLayout
-            android:layout_width="match_parent"
-	        android:layout_height="wrap_content" >
-            <TextView
-                android:layout_width="wrap_content"
-        		android:layout_height="wrap_content"
-        		android:layout_marginLeft="5dp"
-        		android:paddingTop="5dp"
-        		android:paddingBottom="5dp"
-        		android:layout_alignParentLeft="true"
-        		android:layout_centerVertical="true"
-        		android:text="@string/more_numbers_allowed" />
-            <CheckBox
-                android:id="@+id/more_numbers_checkbox"
-                android:layout_width="wrap_content"
-        		android:layout_height="wrap_content"
-        		android:layout_marginRight="5dp"
-        		android:layout_alignParentRight="true"/>
-        </RelativeLayout>
+        android:orientation="vertical" >
+        <com.newhope.contactsvcard.ClearEditText
+	        android:id="@+id/contacts_count"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dp"
+	        android:textSize="18sp"
+	        android:paddingLeft="10dp"
+	        android:paddingRight="10dp"  
+	        android:paddingTop="10dp"
+	        android:paddingBottom="10dp" 
+	        android:drawableRight="@drawable/delete_selector"
+	        android:background = "#00000000"
+	        android:singleLine="true"
+	        android:hint="@string/contacts_count" />
+	    
+	    <TextView
+	        android:id="@+id/more_settings"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dp"
+	        android:paddingTop="5dp"
+	        android:paddingBottom="5dp"
+	        android:gravity="center"
+	        android:text="@string/more_settings"
+	        android:background="@color/clouds"
+	        android:textSize="20sp"/>
+	    
+	    <LinearLayout
+	        android:id="@+id/settings_container"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:background="@drawable/border"
+	        android:orientation="vertical"
+	        android:visibility="gone" >
+	        <RelativeLayout
+	            android:id="@+id/repeat_contacts_item"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content">
+	            <TextView
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_marginLeft="5dp"
+	                android:paddingTop="5dp"
+	                android:paddingBottom="5dp"
+	                android:layout_centerVertical="true"
+	                android:layout_alignParentLeft="true"
+	                android:text="@string/repeat_contacts_allowed" />
+	            <ImageView
+	                android:id="@+id/repeat_contacts_checkbox"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_marginRight="5dp"
+	                android:src="@drawable/btn_check_off"
+	                android:layout_alignParentRight="true"/>
+	        </RelativeLayout>
+	        
+	        <ImageView
+	            android:layout_width="match_parent"
+	            android:layout_height="1dp"
+	            android:layout_marginLeft="5dp"
+	            android:layout_marginRight="5dp"
+	            android:background="#6695a5a6"/>
+	        
+	        <RelativeLayout
+	            android:id="@+id/more_numbers_item"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content" >
+	            <TextView
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_marginLeft="5dp"
+	                android:paddingTop="5dp"
+	                android:paddingBottom="5dp"
+	                android:layout_alignParentLeft="true"
+	                android:layout_centerVertical="true"
+	                android:text="@string/more_numbers_allowed" />
+	            <ImageView
+	                android:id="@+id/more_numbers_checkbox"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_marginRight="5dp"
+	                android:src="@drawable/btn_check_off"
+	                android:layout_alignParentRight="true"/>
+	        </RelativeLayout>
+	    </LinearLayout>
     </LinearLayout>
-    
     <Button
         android:id="@+id/submit_btn"
         android:layout_width="match_parent"

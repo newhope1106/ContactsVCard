@@ -1,5 +1,6 @@
 package com.newhope.contactsvcard;
 
+import com.newhope.contactsvcard.R;
 import android.annotation.SuppressLint;
 import android.content.Context;
 import android.graphics.Canvas;

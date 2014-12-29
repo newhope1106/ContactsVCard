@@ -46,25 +46,30 @@ public final class R {
     }
     public static final class drawable {
         public static final int border=0x7f020000;
-        public static final int delete_selector=0x7f020001;
-        public static final int edit_text_bg=0x7f020002;
-        public static final int ic_launcher=0x7f020003;
-        public static final int search_clear_normal=0x7f020004;
-        public static final int search_clear_pressed=0x7f020005;
-        public static final int submit_button_normal=0x7f020008;
-        public static final int submit_button_pressed=0x7f020009;
-        public static final int submit_button_selector=0x7f020006;
-        public static final int vcard_icon=0x7f020007;
+        public static final int btn_check_off=0x7f020001;
+        public static final int btn_check_on=0x7f020002;
+        public static final int delete_selector=0x7f020003;
+        public static final int edit_text_bg=0x7f020004;
+        public static final int ic_launcher=0x7f020005;
+        public static final int search_clear_normal=0x7f020006;
+        public static final int search_clear_pressed=0x7f020007;
+        public static final int submit_button_normal=0x7f02000a;
+        public static final int submit_button_pressed=0x7f02000b;
+        public static final int submit_button_selector=0x7f020008;
+        public static final int vcard_icon=0x7f020009;
     }
     public static final class id {
-        public static final int action_settings=0x7f090008;
-        public static final int contacts_count=0x7f090001;
-        public static final int grid_view_item=0x7f090007;
-        public static final int more_numbers_checkbox=0x7f090005;
-        public static final int more_settings=0x7f090002;
-        public static final int repeat_contacts_checkbox=0x7f090004;
-        public static final int settings_container=0x7f090003;
-        public static final int submit_btn=0x7f090006;
+        public static final int action_settings=0x7f09000b;
+        public static final int contacts_count=0x7f090002;
+        public static final int content_container=0x7f090001;
+        public static final int grid_view_item=0x7f09000a;
+        public static final int more_numbers_checkbox=0x7f090008;
+        public static final int more_numbers_item=0x7f090007;
+        public static final int more_settings=0x7f090003;
+        public static final int repeat_contacts_checkbox=0x7f090006;
+        public static final int repeat_contacts_item=0x7f090005;
+        public static final int settings_container=0x7f090004;
+        public static final int submit_btn=0x7f090009;
         public static final int title=0x7f090000;
     }
     public static final class layout {
@@ -88,6 +93,8 @@ public final class R {
         public static final int contain_phone_count=0x7f060018;
         public static final int count=0x7f060014;
         public static final int keyback_hint=0x7f06000f;
+        public static final int loading_dialog_message=0x7f06001c;
+        public static final int loading_dialog_title=0x7f06001b;
         public static final int more_numbers_allowed=0x7f06001a;
         public static final int more_settings=0x7f06000d;
         public static final int more_settings_fold=0x7f06000e;
