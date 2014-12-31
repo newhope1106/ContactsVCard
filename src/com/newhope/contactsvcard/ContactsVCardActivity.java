@@ -405,33 +405,52 @@ public class ContactsVCardActivity extends Activity implements OnTouchListener, 
 
 				return;
 			}
-
-			final int contactCount = Integer.parseInt(contactCountStr);
 			
-			if(contactCount >= MAX_NUMBER_OF_COUNTS){
-				Toast.makeText(mContext,
-						getString(R.string.no_more_contacts_number), Toast.LENGTH_SHORT).show();
-			}
-			
-			submitBtn.setEnabled(false);
-			
-			showLoadingDialog();
-			
-			new Thread(new Runnable(){
-
-				@Override
-				public void run() {
-					// TODO Auto-generated method stub
-					generatorVCard(contactCount);
+			try{
+				contactCountStr = contactCountStr.replace("\\s+", "");
+				
+				int contactCount = 0;
+				if(contactCountStr.length() > 6){//如果输入的数字字符串长度超过6位时，直接输出数字太大，避免太长无法转化成int类型
+					Toast.makeText(mContext,
+							getString(R.string.no_more_contacts_number), Toast.LENGTH_SHORT).show();
+					return;
+				}else{
+					contactCount = Integer.parseInt(contactCountStr);
 					
-					Message msg = new Message();
-					msg.what = GENERATING_VCARD_END;
-					
-					mUIThreadHandler.sendMessage(msg);
+					if(contactCount >= MAX_NUMBER_OF_COUNTS){
+						Toast.makeText(mContext,
+								getString(R.string.no_more_contacts_number), Toast.LENGTH_SHORT).show();
+						
+						return;
+					}
 				}
-			}).start();
+				
+				submitBtn.setEnabled(false);
+				
+				showLoadingDialog();
+				
+				final int count = contactCount;
+				new Thread(new Runnable(){
 
-			
+					@Override
+					public void run() {
+						// TODO Auto-generated method stub
+						generatorVCard(count);
+						
+						Message msg = new Message();
+						msg.what = GENERATING_VCARD_END;
+						
+						mUIThreadHandler.sendMessage(msg);
+					}
+				}).start();
+			}catch(Exception e){
+				Message msg = new Message();
+				msg.what = GENERATING_VCARD_FAILED;
+				
+				mUIThreadHandler.sendMessage(msg);
+				
+				e.printStackTrace();
+			}
 		}
 	}
 
