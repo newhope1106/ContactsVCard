@@ -1,4 +1,4 @@
-package com.newhope.contactsvcard;
+package com.newhope.vcard;
 
 import java.io.File;
 import java.io.FileOutputStream;
@@ -35,8 +35,10 @@ import android.widget.Toast;
 import android.view.ViewTreeObserver.OnDrawListener;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
-import com.newhope.contactsvcard.utils.ChinaPhoneUtils;
-import com.newhope.contactsvcard.utils.ChineseNameUtils;
+import com.newhope.contactsvcard.R;
+import com.newhope.vcard.utils.ChinaPhoneUtils;
+import com.newhope.vcard.utils.ChineseNameUtils;
+import com.newhope.vcard.widget.ClearEditText;
 
 public class ContactsVCardActivity extends Activity implements OnTouchListener, Callback{
 	public static final String TAG = "ContactsVCardActivity";

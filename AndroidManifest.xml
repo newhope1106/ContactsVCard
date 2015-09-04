@@ -16,7 +16,7 @@
         android:label="@string/app_name"
         android:theme="@style/FlatStyle" >
         <activity
-            android:name="com.newhope.contactsvcard.ContactsVCardActivity"
+            android:name="com.newhope.vcard.ContactsVCardActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

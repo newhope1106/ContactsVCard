@@ -1,4 +1,4 @@
-package com.newhope.contactsvcard;
+package com.newhope.vcard.widget;
 
 import com.newhope.contactsvcard.R;
 import android.annotation.SuppressLint;

@@ -1,4 +1,4 @@
-package com.newhope.contactsvcard.utils;
+package com.newhope.vcard.utils;
 
 /**
  * 字符编码转换

@@ -1,4 +1,4 @@
-package com.newhope.contactsvcard.utils;
+package com.newhope.vcard.utils;
 
 import java.io.UnsupportedEncodingException;
 import java.util.Random;

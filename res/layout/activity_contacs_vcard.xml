@@ -22,7 +22,7 @@
         android:layout_height="wrap_content"
         android:layout_below="@id/title"
         android:orientation="vertical" >
-        <com.newhope.contactsvcard.ClearEditText
+        <com.newhope.vcard.widget.ClearEditText
 	        android:id="@+id/contacts_count"
 	        android:layout_width="match_parent"
 	        android:layout_height="wrap_content"
