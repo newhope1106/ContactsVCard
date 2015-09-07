@@ -108,6 +108,18 @@
 	                android:src="@drawable/btn_check_off"
 	                android:layout_alignParentRight="true"/>
 	        </RelativeLayout>
+	        
+	        <Button
+	            android:id="@+id/select_avator"
+                android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:gravity="center_vertical|center_horizontal"
+		        android:paddingTop="5dp"
+		        android:paddingBottom="5dp"
+		        android:textSize="18sp"
+		        android:background="#6695a5a6"
+		        android:textColor="@color/peter_river"
+                android:text="@string/select_avators" />
 	    </LinearLayout>
     </LinearLayout>
     <Button
@@ -122,6 +134,5 @@
         android:textSize="28sp"
         android:background="@drawable/submit_button_selector"
         android:textColor="#FFFFFFFF"
-    android:text="@string/submit" />
-
+        android:text="@string/submit" />
 </RelativeLayout>

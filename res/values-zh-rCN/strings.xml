@@ -31,4 +31,8 @@
     
     <string name="loading_dialog_title">生成vcard</string>
     <string name="loading_dialog_message">请稍等.......</string>
+    
+    <string name="select_avators">选择头像</string>
+    <string name="local_images">本地图片</string>
+    <string name="network_images">网络图片</string>
 </resources>

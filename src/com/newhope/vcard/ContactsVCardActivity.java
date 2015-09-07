@@ -12,6 +12,7 @@ import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
+import android.content.Intent;
 import android.graphics.Point;
 import android.os.Bundle;
 import android.os.Environment;
@@ -35,13 +36,13 @@ import android.widget.Toast;
 import android.view.ViewTreeObserver.OnDrawListener;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
-import com.newhope.contactsvcard.R;
+import com.newhope.vcard.R;
 import com.newhope.vcard.utils.ChinaPhoneUtils;
 import com.newhope.vcard.utils.ChineseNameUtils;
 import com.newhope.vcard.widget.ClearEditText;
 
 public class ContactsVCardActivity extends Activity implements OnTouchListener, Callback{
-	public static final String TAG = "ContactsVCardActivity";
+	private static final String TAG = "ContactsVCardActivity";
 	public static final String VCARD_FILE_PATH = Environment
 			.getExternalStorageDirectory() + "/vcard";
 	
@@ -50,6 +51,7 @@ public class ContactsVCardActivity extends Activity implements OnTouchListener, 
 	private ClearEditText contactsCountField = null;
 	private ImageView mRepeatContactsCheckBox = null;
 	private ImageView mMorePhonesCheckBox = null;
+	private Button mSelectAvatorsBtn = null;
 	
 	private View mSettingsContainer = null;
 	private View mContainer = null;
@@ -78,11 +80,11 @@ public class ContactsVCardActivity extends Activity implements OnTouchListener, 
 	private static final int GENERATING_VCARD_FAILED = 2;
 	
 	private static final int GENERATING_VCARD_SUCCESS = 3;
+	
+	private static final int ACTION_SELECT_AVATOR_CODE = 1000;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
-		super.onCreate(savedInstanceState);
-
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_contacs_vcard);
 
@@ -127,13 +129,11 @@ public class ContactsVCardActivity extends Activity implements OnTouchListener, 
 		mRepeatContactsCheckBox = (ImageView) findViewById(R.id.repeat_contacts_checkbox);
 		mMorePhonesCheckBox = (ImageView) findViewById(R.id.more_numbers_checkbox);
 		
-		
 		mContainer.getViewTreeObserver().addOnGlobalLayoutListener(new OnGlobalLayoutListener() {
 			
 			@SuppressLint("NewApi")
 			@Override
 			public void onGlobalLayout() {
-				// TODO Auto-generated method stub
 				startAnimation();
 				mContainer.getViewTreeObserver().removeOnGlobalLayoutListener(this);
 			}
@@ -172,8 +172,22 @@ public class ContactsVCardActivity extends Activity implements OnTouchListener, 
 			}
 		});
 		
+		mSelectAvatorsBtn = (Button)findViewById(R.id.select_avator);
+		mSelectAvatorsBtn.setOnClickListener(new View.OnClickListener() {		
+			@Override
+			public void onClick(View v) {
+				Intent intent = new Intent(ContactsVCardActivity.this, AvatorsSelectActivity.class);
+				startActivityForResult(intent, ACTION_SELECT_AVATOR_CODE);
+			}
+		});
+		
 		mUIThreadHandler = new Handler(this);
 	}
+	
+	@Override
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		
+    }
 
 	@Override
 	public boolean onKeyDown(int keyCode, KeyEvent event) {

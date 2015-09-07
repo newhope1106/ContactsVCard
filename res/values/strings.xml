@@ -33,4 +33,8 @@
     
     <string name="loading_dialog_title">generate vcard</string>
     <string name="loading_dialog_message">please wait.......</string>
+    
+    <string name="select_avators">Select avators</string>
+    <string name="local_images">Local images</string>
+    <string name="network_images">Network images</string>
 </resources>
