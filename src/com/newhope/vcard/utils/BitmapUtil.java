@@ -11,7 +11,21 @@ import android.graphics.Rect;
 import android.graphics.RectF;
 import android.graphics.Bitmap.Config;
 
-public class ImageUtils {
+public class BitmapUtil {
+	
+	/**
+     * Decodes the bitmap with the given sample size
+     */
+    public static Bitmap decodeBitmapFromBytes(byte[] bytes, int sampleSize) {
+        final BitmapFactory.Options options;
+        if (sampleSize <= 1) {
+            options = null;
+        } else {
+            options = new BitmapFactory.Options();
+            options.inSampleSize = sampleSize;
+        }
+        return BitmapFactory.decodeByteArray(bytes, 0, bytes.length, options);
+    }
 	
 	/**
 	 * 圆角正方形

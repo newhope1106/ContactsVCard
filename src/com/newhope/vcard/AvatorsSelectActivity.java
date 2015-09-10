@@ -2,11 +2,17 @@ package com.newhope.vcard;
 
 import java.util.ArrayList;
 
+import com.newhope.vcard.common.ImageQueryCallback;
+import com.newhope.vcard.common.LocalImageLoaderTask;
+import com.newhope.vcard.list.ImageListAdapter;
+import com.newhope.vcard.model.ImageModel;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -24,6 +30,9 @@ public class AvatorsSelectActivity extends Activity{
     private ListView mLocalImageListView = null;
     private ListView mNetworkImageListView = null;
 	
+    private ImageListAdapter mLocalImageAdapter = null;
+    private ImageListAdapter mNetworkImageAdapter = null;
+    
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -47,6 +56,7 @@ public class AvatorsSelectActivity extends Activity{
 		mTitleContainer.add(getString(R.string.network_images));
 		
 		setupPagerView();
+		setupListView();
 	}
 	
 	private void setupPagerView() {
@@ -84,5 +94,22 @@ public class AvatorsSelectActivity extends Activity{
                 return mTitleContainer.get(position);
             }
 		});
+	}
+	
+	private void setupListView() {
+		mLocalImageAdapter = new ImageListAdapter(this);
+		mLocalImageListView.setAdapter(mLocalImageAdapter);
+		
+		mNetworkImageAdapter = new ImageListAdapter(this);
+		mNetworkImageListView.setAdapter(mNetworkImageAdapter);
+		
+		new LocalImageLoaderTask(this, new ImageQueryCallback() {
+			
+			@Override
+			public void onQueryComplete(ArrayList<ImageModel> imageList) {
+				Log.d("xxxx", "size = " + imageList.size());
+				mLocalImageAdapter.changeList(imageList);
+			}
+		}).execute();
 	}
 }
