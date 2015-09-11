@@ -162,10 +162,10 @@ class ImageLoaderManagerImpl extends ImageLoaderManager implements Callback{
     private boolean mPaused;
 
     /** Cache size for {@link #mBitmapHolderCache} for devices with "large" RAM. */
-    private static final int HOLDER_CACHE_SIZE = 2000000;
+    private static final int HOLDER_CACHE_SIZE = 80000000;
 
     /** Cache size for {@link #mBitmapCache} for devices with "large" RAM. */
-    private static final int BITMAP_CACHE_SIZE = 36864 * 48; // 1728K
+    private static final int BITMAP_CACHE_SIZE = 36864 * 48 * 40; // 1728*40K
     
     public ImageLoaderManagerImpl(Context context) {
     	mContext = context;
