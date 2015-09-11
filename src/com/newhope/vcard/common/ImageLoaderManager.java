@@ -211,14 +211,12 @@ class ImageLoaderManagerImpl extends ImageLoaderManager implements Callback{
     
     @Override
 	public void loadPhoto(ImageView imageView, Uri imageUri) {
-    	Log.d("xxxx", "[loadPhoto]");
     	if (imageUri == null) {
     		applyDefaultImageView(imageView);
     	} else {
     		ImageModel imageModel = ImageModel.createFromUri(imageUri, null);
     		boolean loaded = loadCachedPhoto(imageView, imageModel);
     		
-    		Log.d("xxxx", "[loadPhoto] loaded=" + loaded);
             if (loaded) {
                 mPendingRequests.remove(imageView);
             } else {
@@ -256,14 +254,7 @@ class ImageLoaderManagerImpl extends ImageLoaderManager implements Callback{
      * @return false if the photo needs to be (re)loaded from the provider.
      */
     private boolean loadCachedPhoto(ImageView view, ImageModel imageModel) {
-    	Log.d("xxxx", "[loadCachedPhoto] imageModel.getKey() = " + imageModel.getKey());
         BitmapHolder holder = mBitmapHolderCache.get(imageModel.getKey());
-        
-        if (holder == null) {
-        	Log.d("xxxx", "[loadCachedPhoto] holder == null");
-        } else {
-        	Log.d("xxxx", "[loadCachedPhoto] holder != null");
-        }
         
         if (holder == null) {
             // The bitmap has not been loaded ==> show default avatar
@@ -272,11 +263,8 @@ class ImageLoaderManagerImpl extends ImageLoaderManager implements Callback{
         }
 
         if (holder.bytes == null) {
-        	Log.d("xxxx", "[loadCachedPhoto] holder.bytes == null");
         	applyDefaultImageView(view);
             return holder.fresh;
-        } else {
-        	Log.d("xxxx", "[loadCachedPhoto] holder.bytes != null");
         }
 
         Bitmap cachedBitmap = holder.bitmapRef == null ? null : holder.bitmapRef.get();
@@ -292,8 +280,7 @@ class ImageLoaderManagerImpl extends ImageLoaderManager implements Callback{
                 return false;
             }
         }
-
-        Log.d("xxxx", "[loadCachedPhoto] setImageBitmap");
+        
         view.setImageBitmap(cachedBitmap);
 
         // Put the bitmap in the LRU cache. But only do this for images that are small enough
@@ -305,7 +292,6 @@ class ImageLoaderManagerImpl extends ImageLoaderManager implements Callback{
         // Soften the reference
         holder.bitmap = null;
 
-        Log.d("xxxx", "[loadCachedPhoto] holder.fresh = " + holder.fresh);
         return holder.fresh;
     }
     
@@ -366,7 +352,6 @@ class ImageLoaderManagerImpl extends ImageLoaderManager implements Callback{
      * This allows us to load images in bulk.
      */
     private void requestLoading() {
-    	Log.d("xxxx", "[requestLoading]");
         if (!mLoadingRequested) {
             mLoadingRequested = true;
             mMainThreadHandler.sendEmptyMessage(MESSAGE_REQUEST_LOADING);
@@ -446,7 +431,6 @@ class ImageLoaderManagerImpl extends ImageLoaderManager implements Callback{
             inflateBitmap(holder);
         }
 
-        Log.d("xxxx", "[cacheBitmap] key = " + key);
         mBitmapHolderCache.put(key, holder);
         mBitmapHolderCacheAllUnfresh = false;
     }
@@ -484,7 +468,9 @@ class ImageLoaderManagerImpl extends ImageLoaderManager implements Callback{
             }
         }
 
-        if (jpegsDecoded) mMainThreadHandler.sendEmptyMessage(MESSAGE_PHOTOS_LOADED);
+        if (jpegsDecoded){
+        	mMainThreadHandler.sendEmptyMessage(MESSAGE_PHOTOS_LOADED);
+        }
     }
     
     /**
@@ -498,7 +484,6 @@ class ImageLoaderManagerImpl extends ImageLoaderManager implements Callback{
         private final Set<ImageModel> mPhotoUris = new HashSet<ImageModel>();
 
         private Handler mLoaderThreadHandler;
-        private byte mBuffer[];
 
         public LoaderThread(ContentResolver resolver) {
             super(TAG);
@@ -548,12 +533,8 @@ class ImageLoaderManagerImpl extends ImageLoaderManager implements Callback{
         private void loadUriBasedPhotos() {
             for (ImageModel uriRequest : mPhotoUris) {
                 Uri uri = uriRequest.uri;
-                if (mBuffer == null) {
-                    mBuffer = new byte[BUFFER_SIZE];
-                }
                 
                 byte[] imageBytes = ImageLoaderUtils.loadImages(mResolver, uri);
-                Log.d("xxxx", "[loadUriBasedPhotos]");
                 if (imageBytes != null) {
                 	cacheBitmap(uri, imageBytes, false);
                 	mMainThreadHandler.sendEmptyMessage(MESSAGE_PHOTOS_LOADED);

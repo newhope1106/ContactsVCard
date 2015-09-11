@@ -26,14 +26,12 @@ public class ImageListAdapter extends BaseAdapter{
 	
 	public void changeList(ArrayList<ImageModel> imageList) {
 		mImageList = imageList;
-		
-		Log.d("xxxx", "[changeList]");
+
 		notifyDataSetChanged();
 	}
 
 	@Override
 	public int getCount() {
-		Log.d("xxxx", "[getCount]");
 		if (mImageList == null) {
 			return 0;
 		}
@@ -64,8 +62,6 @@ public class ImageListAdapter extends BaseAdapter{
 		} else {
 			view = (CheckableImageView)convertView;
 		}
-		
-		Log.d("xxxx", "[getView] position = " + position);
 		
 		ImageModel imageModel = mImageList.get(position);
 		

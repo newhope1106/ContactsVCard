@@ -107,7 +107,6 @@ public class AvatorsSelectActivity extends Activity{
 			
 			@Override
 			public void onQueryComplete(ArrayList<ImageModel> imageList) {
-				Log.d("xxxx", "size = " + imageList.size());
 				mLocalImageAdapter.changeList(imageList);
 			}
 		}).execute();

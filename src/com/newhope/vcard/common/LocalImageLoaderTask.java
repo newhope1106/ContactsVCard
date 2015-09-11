@@ -33,8 +33,7 @@ public class LocalImageLoaderTask extends AsyncTask<Void, Void, ArrayList<ImageM
 	@Override
 	protected ArrayList<ImageModel> doInBackground(Void... params) {
 		Cursor cursor = mContext.getContentResolver().query(MEDIA_IMAGE_URI, MEDIA_IMAGE_PROJECTION, null, null, null);
-		
-		Log.d("xxxx", "[doInBackground] cursor - size = " + cursor.getCount());
+
 		ArrayList<ImageModel> imageList = new ArrayList<ImageModel>();
 		try{
 			if (cursor != null) {
@@ -49,7 +48,6 @@ public class LocalImageLoaderTask extends AsyncTask<Void, Void, ArrayList<ImageM
 					imageModel.imageName = displayName;
 					imageModel.uri = uri;
 					
-					Log.d("xxxx", "[doInBackground] uri = " + uri);
 					imageList.add(imageModel);
 				}
 			}
