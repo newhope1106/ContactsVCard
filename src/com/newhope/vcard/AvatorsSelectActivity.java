@@ -6,15 +6,17 @@ import com.newhope.vcard.common.ImageQueryCallback;
 import com.newhope.vcard.common.LocalImageLoaderTask;
 import com.newhope.vcard.list.ImageListAdapter;
 import com.newhope.vcard.model.ImageModel;
+import com.newhope.vcard.widget.CheckableImageView;
 
+import a_vcard.android.util.Log;
 import android.app.Activity;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.PagerTabStrip;
 import android.support.v4.view.ViewPager;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
+import android.view.View.OnClickListener;
 import android.view.ViewGroup;
 import android.widget.ListView;
 
@@ -32,6 +34,8 @@ public class AvatorsSelectActivity extends Activity{
 	
     private ImageListAdapter mLocalImageAdapter = null;
     private ImageListAdapter mNetworkImageAdapter = null;
+    
+    private OnTileItemClickListener mListener=null;
     
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -103,6 +107,11 @@ public class AvatorsSelectActivity extends Activity{
 		mNetworkImageAdapter = new ImageListAdapter(this);
 		mNetworkImageListView.setAdapter(mNetworkImageAdapter);
 		
+		mListener = new OnTileItemClickListener();
+		
+		mLocalImageAdapter.setOnClickLitener(mListener);
+		mNetworkImageAdapter.setOnClickLitener(mListener);
+		
 		new LocalImageLoaderTask(this, new ImageQueryCallback() {
 			
 			@Override
@@ -110,5 +119,18 @@ public class AvatorsSelectActivity extends Activity{
 				mLocalImageAdapter.changeList(imageList);
 			}
 		}).execute();
+	}
+	
+	private class OnTileItemClickListener implements OnClickListener{
+
+		@Override
+		public void onClick(View v) {
+			CheckableImageView imageView = (CheckableImageView) v;
+			
+			if (imageView != null) {
+				imageView.setChecked(!imageView.isChecked());
+			}
+			
+		}
 	}
 }

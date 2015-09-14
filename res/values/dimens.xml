@@ -4,5 +4,6 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
 
-    <dimen name="image_list_item_size">60dip</dimen>
+    <dimen name="image_list_item_size">80dip</dimen>
+    <dimen name="image_list_padding">2dip</dimen>
 </resources>

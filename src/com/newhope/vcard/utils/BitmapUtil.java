@@ -23,7 +23,9 @@ public class BitmapUtil {
         } else {
             options = new BitmapFactory.Options();
             options.inSampleSize = sampleSize;
+            options.inPreferredConfig = Bitmap.Config.RGB_565;
         }
+
         return BitmapFactory.decodeByteArray(bytes, 0, bytes.length, options);
     }
 	
