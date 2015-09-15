@@ -1,6 +1,7 @@
 package com.newhope.vcard;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 
 import com.newhope.vcard.common.ImageQueryCallback;
 import com.newhope.vcard.common.LocalImageLoaderTask;
@@ -8,8 +9,8 @@ import com.newhope.vcard.list.ImageListAdapter;
 import com.newhope.vcard.model.ImageModel;
 import com.newhope.vcard.widget.CheckableImageView;
 
-import a_vcard.android.util.Log;
 import android.app.Activity;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.PagerTabStrip;
@@ -37,6 +38,8 @@ public class AvatorsSelectActivity extends Activity{
     
     private OnTileItemClickListener mListener=null;
     
+    private HashSet<Uri> mImageUriSet = new HashSet<Uri>();
+    
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -58,6 +61,9 @@ public class AvatorsSelectActivity extends Activity{
 		
 		mTitleContainer.add(getString(R.string.local_images));
 		mTitleContainer.add(getString(R.string.network_images));
+		
+		
+		mImageUriSet.clear();
 		
 		setupPagerView();
 		setupListView();
@@ -126,11 +132,15 @@ public class AvatorsSelectActivity extends Activity{
 		@Override
 		public void onClick(View v) {
 			CheckableImageView imageView = (CheckableImageView) v;
-			
 			if (imageView != null) {
 				imageView.setChecked(!imageView.isChecked());
+				
+				if (imageView.isChecked()) {
+					mImageUriSet.add((Uri)imageView.getTag());
+				} else {
+					mImageUriSet.remove((Uri)imageView.getTag());
+				}
 			}
-			
 		}
 	}
 }

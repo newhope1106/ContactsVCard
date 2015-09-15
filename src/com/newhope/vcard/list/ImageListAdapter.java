@@ -135,6 +135,7 @@ public class ImageListAdapter extends BaseAdapter{
 			
 			if (childView instanceof CheckableImageView) {
 				mImageLoader.loadPhoto((CheckableImageView)childView, oneRowList.get(index).uri);
+				childView.setTag(oneRowList.get(index).uri);
 				index++;
 			}
 		}

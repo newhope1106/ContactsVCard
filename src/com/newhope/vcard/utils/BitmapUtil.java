@@ -1,5 +1,8 @@
 package com.newhope.vcard.utils;
 
+import java.io.InputStream;
+
+import android.content.Context;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Canvas;
@@ -195,5 +198,14 @@ public class BitmapUtil {
         scaleH = (float)(scaleH*scale);
         mt.postScale(scaleW,scaleH);
         return Bitmap.createBitmap(map,0,0,map.getWidth(),map.getHeight(),mt,true);
+    }
+	
+	public static Bitmap readBitMap(Context context, int resId) {
+        BitmapFactory.Options opt = new BitmapFactory.Options();
+        opt.inPreferredConfig = Bitmap.Config.RGB_565;
+        opt.inPurgeable = true;
+        opt.inInputShareable = true;
+        InputStream is = context.getResources().openRawResource(resId);
+        return BitmapFactory.decodeStream(is, null, opt);
     }
 }

@@ -4,6 +4,7 @@ import com.newhope.vcard.R;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.drawable.Drawable;
+import android.util.Log;
 import android.widget.ImageView;
 
 public class CheckableImageView extends ImageView{
@@ -24,7 +25,7 @@ public class CheckableImageView extends ImageView{
 	public void setChecked(boolean isChecked) {
 		mIsChecked = isChecked;
 		
-		invalidate();
+		requestLayout();
 	}
 	
 	public boolean isChecked() {

@@ -113,6 +113,8 @@ class ImageLoaderManagerImpl extends ImageLoaderManager implements Callback{
     private final Context mContext;
     
     private static int sImageSize;
+    
+    private static int DEFAULT_RES_ICON_ID = R.drawable.default_icon;
 
     /**
      * An LRU cache for bitmap holders. The cache contains bytes for photos just
@@ -546,6 +548,8 @@ class ImageLoaderManagerImpl extends ImageLoaderManager implements Callback{
     }
 	
 	private void applyDefaultImageView(ImageView imageView) {
-		
+		Bitmap bmp = BitmapUtil.readBitMap(mContext, DEFAULT_RES_ICON_ID);
+		bmp = BitmapUtil.resizeBitMap(bmp, sImageSize);
+		imageView.setImageBitmap(bmp);
 	}
 }
