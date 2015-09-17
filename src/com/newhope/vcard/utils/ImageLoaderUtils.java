@@ -6,8 +6,10 @@ import java.net.URL;
 
 import android.content.ContentResolver;
 import android.net.Uri;
+import android.util.Log;
 
 public class ImageLoaderUtils {
+	private static final String TAG = "ImageLoaderUtils";
 	
 	private static final int BUFFER_SIZE = 1024*16;
 	
@@ -40,8 +42,11 @@ public class ImageLoaderUtils {
                 } finally {
                     is.close();
                 }
+			} else {
+				Log.d(TAG, "load failed : uri=" + uri);
 			}
 		} catch (Exception ex) {
+			Log.d(TAG, "load failed : uri=" + uri);
 			ex.printStackTrace();
 		}
 		return null;

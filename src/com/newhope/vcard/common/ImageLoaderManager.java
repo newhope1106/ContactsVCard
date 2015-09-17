@@ -218,7 +218,6 @@ class ImageLoaderManagerImpl extends ImageLoaderManager implements Callback{
     	} else {
     		ImageModel imageModel = ImageModel.createFromUri(imageUri, null);
     		boolean loaded = loadCachedPhoto(imageView, imageModel);
-    		
             if (loaded) {
                 mPendingRequests.remove(imageView);
             } else {

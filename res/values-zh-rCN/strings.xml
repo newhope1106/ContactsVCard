@@ -35,4 +35,5 @@
     <string name="select_avators">选择头像</string>
     <string name="local_images">本地图片</string>
     <string name="network_images">网络图片</string>
+    <string name="load_more">加载更多</string>
 </resources>

@@ -36,6 +36,10 @@ public class ImageListAdapter extends BaseAdapter{
 		notifyDataSetChanged();
 	}
 	
+	public ArrayList<ImageModel> getImageList() {
+		return mImageList;
+	}
+	
 	public void setOnClickLitener(OnClickListener listener) {
 		mListener = listener;
 	}
