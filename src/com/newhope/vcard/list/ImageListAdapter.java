@@ -144,4 +144,12 @@ public class ImageListAdapter extends BaseAdapter{
 			}
 		}
 	}
+	
+	public void resumeImageLoader() {
+		mImageLoader.resume();
+	}
+	
+	public void pauseImageLoader() {
+		mImageLoader.pause();
+	}
 }

@@ -88,6 +88,18 @@ public class AvatorsSelectActivity extends Activity{
 		setupListView();
 	}
 	
+	public void onResume() {
+		super.onResume();
+		mLocalImageAdapter.resumeImageLoader();
+		mNetworkImageAdapter.resumeImageLoader();
+	}
+	
+	public void onStop() {
+		mLocalImageAdapter.pauseImageLoader();
+		mNetworkImageAdapter.pauseImageLoader();
+		super.onStop();
+	}
+	
 	private void setupPagerView() {
 		mPager.setAdapter(new PagerAdapter() {
 			
@@ -257,6 +269,5 @@ public class AvatorsSelectActivity extends Activity{
 				mFooterView.setVisibility(View.VISIBLE);
 			}
 		}
-		
 	}
 }
