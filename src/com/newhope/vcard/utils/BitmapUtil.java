@@ -1,5 +1,6 @@
 package com.newhope.vcard.utils;
 
+import java.io.ByteArrayOutputStream;
 import java.io.InputStream;
 
 import android.content.Context;
@@ -208,4 +209,10 @@ public class BitmapUtil {
         InputStream is = context.getResources().openRawResource(resId);
         return BitmapFactory.decodeStream(is, null, opt);
     }
+	
+    public static byte[] Bitmap2Bytes(Bitmap bm) {  
+        ByteArrayOutputStream baos = new ByteArrayOutputStream();  
+        bm.compress(Bitmap.CompressFormat.JPEG, 60, baos);
+        return baos.toByteArray();  
+    }  
 }

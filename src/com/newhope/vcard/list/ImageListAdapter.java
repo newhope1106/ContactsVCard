@@ -27,7 +27,7 @@ public class ImageListAdapter extends BaseAdapter{
 	public ImageListAdapter(Context context) {
 		mContext = context;
 		
-		mImageLoader = ImageLoaderManager.getInstance(mContext);
+		mImageLoader = ImageLoaderManager.getInstance(mContext.getApplicationContext());
 	}
 	
 	public void changeList(ArrayList<ImageModel> imageList) {

@@ -9,10 +9,12 @@ import com.newhope.vcard.common.LocalImageLoaderTask;
 import com.newhope.vcard.common.searcher.BaiduSearcher;
 import com.newhope.vcard.list.ImageListAdapter;
 import com.newhope.vcard.model.ImageModel;
+import com.newhope.vcard.utils.ImageUriCache;
 import com.newhope.vcard.widget.CheckableImageView;
 
 import android.util.Log;
 import android.app.Activity;
+import android.content.Intent;
 import android.net.Uri;
 import android.os.AsyncTask;
 import android.os.Bundle;
@@ -55,9 +57,13 @@ public class AvatorsSelectActivity extends Activity{
     
     private static final int MAX_NETWOR_IMAGE_COUNT = 100;
     
+    private Intent mIntent;
+    
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+		mIntent = getIntent();
 		
 		setContentView(R.layout.activity_select_avators);
 		
@@ -97,7 +103,22 @@ public class AvatorsSelectActivity extends Activity{
 	public void onStop() {
 		mLocalImageAdapter.pauseImageLoader();
 		mNetworkImageAdapter.pauseImageLoader();
+		
+		
+		
 		super.onStop();
+	}
+	
+	public void onBackPressed(){
+		if (mIntent != null) {
+			Log.d(TAG, "[onStop] putExtra");
+			ImageUriCache.setCache(mImageUriSet);
+			setResult(Activity.RESULT_OK, mIntent);
+		} else {
+			Log.d(TAG, "[onStop] mIntent is null");
+		}
+		
+		super.onBackPressed();
 	}
 	
 	private void setupPagerView() {

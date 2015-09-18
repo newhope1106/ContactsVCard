@@ -4,6 +4,9 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.OutputStreamWriter;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.Iterator;
 
 import a_vcard.android.provider.Contacts;
 import a_vcard.android.syncml.pim.vcard.ContactStruct;
@@ -13,12 +16,15 @@ import android.app.Activity;
 import android.app.ProgressDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Point;
+import android.net.Uri;
 import android.os.Bundle;
 import android.os.Environment;
 import android.os.Handler;
 import android.os.Handler.Callback;
 import android.os.Message;
+import android.provider.ContactsContract.CommonDataKinds.Photo;
 import android.util.Log;
 import android.view.Display;
 import android.view.KeyEvent;
@@ -37,8 +43,12 @@ import android.view.ViewTreeObserver.OnDrawListener;
 import android.view.ViewTreeObserver.OnGlobalLayoutListener;
 
 import com.newhope.vcard.R;
+import com.newhope.vcard.common.ImageLoaderManager;
+import com.newhope.vcard.utils.BitmapUtil;
 import com.newhope.vcard.utils.ChinaPhoneUtils;
 import com.newhope.vcard.utils.ChineseNameUtils;
+import com.newhope.vcard.utils.ImageLoaderUtils;
+import com.newhope.vcard.utils.ImageUriCache;
 import com.newhope.vcard.widget.ClearEditText;
 
 public class ContactsVCardActivity extends Activity implements OnTouchListener, Callback{
@@ -82,11 +92,20 @@ public class ContactsVCardActivity extends Activity implements OnTouchListener, 
 	private static final int GENERATING_VCARD_SUCCESS = 3;
 	
 	private static final int ACTION_SELECT_AVATOR_CODE = 1000;
-
+	
+	private ArrayList<Uri> mImageUriList = new ArrayList<Uri>();
+	
+	private ImageLoaderManager mImageLodader;
+	
+	private int mImageSize;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_contacs_vcard);
+		
+		mImageSize = getResources().getDimensionPixelSize(R.dimen.image_thumb_item_size);
+		mImageLodader = ImageLoaderManager.getInstance(getApplicationContext());
 
 		submitBtn = (Button) findViewById(R.id.submit_btn);
 		submitBtn.setOnClickListener(new OnSubmitBtnClickListener(this));
@@ -186,7 +205,23 @@ public class ContactsVCardActivity extends Activity implements OnTouchListener, 
 	
 	@Override
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-		
+		Log.d(TAG, "[onActivityResult] resultCode=" + resultCode);
+		if (resultCode == Activity.RESULT_OK && data!= null) {
+			HashSet<Uri> imageUriSet = ImageUriCache.getCache();
+			
+			if (imageUriSet != null) {
+				Log.d(TAG, "[onActivityResult] imageUriSet size=" + imageUriSet.size());
+				mImageUriList.clear();
+				
+				Iterator<Uri> it = imageUriSet.iterator();
+				
+				while (it.hasNext()) {
+					mImageUriList.add(it.next());
+				}
+			} else {
+				Log.d(TAG, "[onActivityResult] imageUriSet is null");
+			}
+		}
     }
 
 	@Override
@@ -293,6 +328,13 @@ public class ContactsVCardActivity extends Activity implements OnTouchListener, 
 
 			for (int i = 0; i < contactCount; i++) {
 				ContactStruct contact = new ContactStruct();
+				byte[] imageBytes = getRandomImageBytes();
+				
+				if (imageBytes != null) {
+					contact.title="hello kitty";
+					contact.photoType = "JPEG";
+					contact.photoBytes = imageBytes;
+				}
 
 				String surName = ChineseNameUtils.getChineseSurname();
 				String name = ChineseNameUtils.getChineseName();
@@ -344,7 +386,10 @@ public class ContactsVCardActivity extends Activity implements OnTouchListener, 
 								
 							case 2://姓名相同，号码不同
 								ContactStruct anoContact = new ContactStruct();
+								anoContact.title="hello kitty";
 								anoContact.name = contact.name;
+								anoContact.photoBytes = contact.photoBytes;
+								anoContact.photoType = "JPEG";
 								anoContact.addPhone(Contacts.Phones.TYPE_MOBILE, tel, null, true);
 								if(mCheckStatus[1]){//允许有多个号码，可以重复2-3个号码
 									if((int) (Math.random()*5) == 3){
@@ -382,6 +427,27 @@ public class ContactsVCardActivity extends Activity implements OnTouchListener, 
 			mUIThreadHandler.sendMessage(msg);
 			e.printStackTrace();
 		}
+	}
+	
+	private byte[] getRandomImageBytes() {
+		int size = mImageUriList.size();
+		if (size > 0) {
+			int index = (int)Math.random()*size;
+			Uri uri = mImageUriList.get(index);
+			Bitmap bitmap = mImageLodader.getCachedBitmap(uri);
+			
+			if (bitmap == null){
+				byte[] bitmapBytes = ImageLoaderUtils.loadImages(getContentResolver(), uri);
+				Bitmap originBitmap = BitmapUtil.decodeBitmapFromBytes(bitmapBytes, 1);
+				bitmap = BitmapUtil.resizeBitMap(originBitmap, mImageSize);
+			} else {
+				bitmap = BitmapUtil.resizeBitMap(bitmap, mImageSize);
+			}
+
+			return BitmapUtil.Bitmap2Bytes(bitmap);
+		}
+		
+		return null;
 	}
 	
 	private void hideSoftKeyboard() {

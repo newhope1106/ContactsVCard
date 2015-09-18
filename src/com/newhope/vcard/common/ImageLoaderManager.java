@@ -38,6 +38,11 @@ public abstract class ImageLoaderManager implements ComponentCallbacks2{
      * inside this photo manager.
      */
     public abstract void removePhoto(ImageView view);
+    
+    /**
+     * get cached bitmap
+     * */
+    public abstract Bitmap getCachedBitmap(Uri imageUri);
 
     /**
      * Temporarily stops loading photos from the database.
@@ -57,7 +62,6 @@ public abstract class ImageLoaderManager implements ComponentCallbacks2{
     public abstract void refreshCache();
     
     public static synchronized ImageLoaderManager getInstance(Context context) {
-
     	if (sLoaderManger == null) {
     		sLoaderManger = new ImageLoaderManagerImpl(context);
     	}
@@ -197,6 +201,11 @@ class ImageLoaderManagerImpl extends ImageLoaderManager implements Callback{
             }
         };
 
+        if (mContext == null) {
+        	Log.d(TAG, "mContext is null");
+        } else {
+        	Log.d(TAG, "echo R.dimen.image_list_item_size=" + R.dimen.image_list_item_size);
+        }
         sImageSize = mContext.getResources().getDimensionPixelSize(R.dimen.image_list_item_size);
         
         Log.i(TAG, "Cache adj: " + cacheSizeAdjustment);
@@ -229,6 +238,18 @@ class ImageLoaderManagerImpl extends ImageLoaderManager implements Callback{
             }
     	}
 	}
+    
+    public Bitmap getCachedBitmap(Uri imageUri) {
+    	BitmapHolder holder = mBitmapHolderCache.get(imageUri);
+    	
+    	if (holder != null) {
+    		Bitmap cachedBitmap = holder.bitmapRef == null ? null : holder.bitmapRef.get();
+    		
+    		return cachedBitmap;
+    	}
+    	
+    	return null;
+    }
     
     @Override
     public void removePhoto(ImageView view) {

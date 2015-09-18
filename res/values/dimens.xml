@@ -6,4 +6,5 @@
 
     <dimen name="image_list_item_size">80dip</dimen>
     <dimen name="image_list_padding">2dip</dimen>
+    <dimen name="image_thumb_item_size">40dip</dimen>
 </resources>
