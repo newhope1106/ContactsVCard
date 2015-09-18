@@ -432,8 +432,9 @@ public class ContactsVCardActivity extends Activity implements OnTouchListener, 
 	private byte[] getRandomImageBytes() {
 		int size = mImageUriList.size();
 		if (size > 0) {
-			int index = (int)Math.random()*size;
+			int index = (int)(Math.random()*size);
 			Uri uri = mImageUriList.get(index);
+			Log.d(TAG, "[getRandomImageBytes]index = " + index + ", uri=" + uri);
 			Bitmap bitmap = mImageLodader.getCachedBitmap(uri);
 			
 			if (bitmap == null){
