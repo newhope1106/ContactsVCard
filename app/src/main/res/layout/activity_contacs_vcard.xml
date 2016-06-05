@@ -1,0 +1,138 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="10dip"
+    android:paddingRight="10dip" >
+    
+    <TextView
+        android:id="@+id/title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:gravity="center_vertical|center_horizontal"
+        android:layout_marginTop="30dp"
+        android:layout_marginBottom="30dp"
+        android:textSize="28sp"
+        android:text="@string/normal_contacts_vcard" />
+   
+    <LinearLayout
+        android:id="@+id/content_container"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/title"
+        android:orientation="vertical" >
+        <com.newhope.vcard.widget.ClearEditText
+	        android:id="@+id/contacts_count"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dp"
+	        android:textSize="18sp"
+	        android:paddingLeft="10dp"
+	        android:paddingRight="10dp"  
+	        android:paddingTop="10dp"
+	        android:paddingBottom="10dp" 
+	        android:drawableRight="@drawable/delete_selector"
+	        android:background = "#00000000"
+	        android:singleLine="true"
+	        android:digits="1234567890"
+	        android:inputType="number"
+	        android:hint="@string/contacts_count" />
+	    
+	    <TextView
+	        android:id="@+id/more_settings"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:layout_marginTop="10dp"
+	        android:paddingTop="5dp"
+	        android:paddingBottom="5dp"
+	        android:gravity="center"
+	        android:text="@string/more_settings"
+	        android:background="@color/clouds"
+	        android:textSize="20sp"/>
+	    
+	    <LinearLayout
+	        android:id="@+id/settings_container"
+	        android:layout_width="match_parent"
+	        android:layout_height="wrap_content"
+	        android:background="@drawable/border"
+	        android:orientation="vertical"
+	        android:visibility="gone" >
+	        <RelativeLayout
+	            android:id="@+id/repeat_contacts_item"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content">
+	            <TextView
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_marginLeft="5dp"
+	                android:paddingTop="5dp"
+	                android:paddingBottom="5dp"
+	                android:layout_centerVertical="true"
+	                android:layout_alignParentLeft="true"
+	                android:text="@string/repeat_contacts_allowed" />
+	            <ImageView
+	                android:id="@+id/repeat_contacts_checkbox"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_marginRight="5dp"
+	                android:src="@drawable/btn_check_off"
+	                android:layout_alignParentRight="true"/>
+	        </RelativeLayout>
+	        
+	        <ImageView
+	            android:layout_width="match_parent"
+	            android:layout_height="1dp"
+	            android:layout_marginLeft="5dp"
+	            android:layout_marginRight="5dp"
+	            android:background="#6695a5a6"/>
+	        
+	        <RelativeLayout
+	            android:id="@+id/more_numbers_item"
+	            android:layout_width="match_parent"
+	            android:layout_height="wrap_content" >
+	            <TextView
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_marginLeft="5dp"
+	                android:paddingTop="5dp"
+	                android:paddingBottom="5dp"
+	                android:layout_alignParentLeft="true"
+	                android:layout_centerVertical="true"
+	                android:text="@string/more_numbers_allowed" />
+	            <ImageView
+	                android:id="@+id/more_numbers_checkbox"
+	                android:layout_width="wrap_content"
+	                android:layout_height="wrap_content"
+	                android:layout_marginRight="5dp"
+	                android:src="@drawable/btn_check_off"
+	                android:layout_alignParentRight="true"/>
+	        </RelativeLayout>
+	        
+	        <Button
+	            android:id="@+id/select_avator"
+                android:layout_width="match_parent"
+		        android:layout_height="wrap_content"
+		        android:gravity="center_vertical|center_horizontal"
+		        android:paddingTop="5dp"
+		        android:paddingBottom="5dp"
+		        android:textSize="18sp"
+		        android:background="#6695a5a6"
+		        android:textColor="@color/peter_river"
+                android:text="@string/select_avators" />
+	    </LinearLayout>
+    </LinearLayout>
+    <Button
+        android:id="@+id/submit_btn"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:gravity="center_vertical|center_horizontal"
+        android:paddingTop="5dp"
+        android:paddingBottom="8dp"
+        android:layout_marginBottom="10dp"
+        android:textSize="28sp"
+        android:background="@drawable/submit_button_selector"
+        android:textColor="#FFFFFFFF"
+        android:text="@string/submit" />
+</RelativeLayout>
